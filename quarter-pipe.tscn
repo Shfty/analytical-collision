@@ -1,0 +1,95 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://quarter-pipe.gd" type="Script" id=1]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+
+[sub_resource type="QuadMesh" id=2]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 0.5, 0.5 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 0.5, 0.5 )
+
+[sub_resource type="QuadMesh" id=8]
+
+[sub_resource type="SphereMesh" id=9]
+
+[sub_resource type="PhysicsMaterial" id=7]
+friction = 0.0
+
+[sub_resource type="SphereMesh" id=5]
+radius = 25.0
+height = 50.0
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 25.0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 0, 507 )
+scale = Vector2( 1060, 125 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D"]
+modulate = Color( 0.235294, 0.278431, 0.921569, 1 )
+material = SubResource( 1 )
+position = Vector2( 0.5, 0.5 )
+mesh = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 0.5, 0.5 )
+shape = SubResource( 3 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2( 920, -78 )
+scale = Vector2( 140, 585 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D2"]
+modulate = Color( 0.235294, 0.278431, 0.921569, 1 )
+material = SubResource( 1 )
+position = Vector2( 0.5, 0.5 )
+mesh = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2( 0.5, 0.5 )
+shape = SubResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 720, 307 )
+scale = Vector2( 200, 200 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0.5, 0.5 )
+shape = SubResource( 4 )
+
+[node name="QuarterPipeMesh" type="MeshInstance2D" parent="Area2D"]
+modulate = Color( 0.235294, 0.278431, 0.921569, 1 )
+position = Vector2( 0.5, 0.5 )
+mesh = SubResource( 8 )
+
+[node name="BackgroundMaskMesh" type="MeshInstance2D" parent="Area2D"]
+modulate = Color( 0.301961, 0.301961, 0.301961, 1 )
+position = Vector2( 0, -2.38419e-07 )
+mesh = SubResource( 9 )
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2( 895, 31 )
+physics_material_override = SubResource( 7 )
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="RigidBody2D"]
+mesh = SubResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource( 6 )
